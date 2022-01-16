@@ -1,4 +1,4 @@
-package com.stepech.DiscordSRVTweaks;
+package au.id.rleach.DiscordSRVTweaks;
 
 import github.scarsz.discordsrv.DiscordSRV;
 import github.scarsz.discordsrv.dependencies.jda.api.entities.Member;
@@ -6,8 +6,6 @@ import github.scarsz.discordsrv.dependencies.jda.api.events.guild.voice.GuildVoi
 import github.scarsz.discordsrv.dependencies.jda.api.events.guild.voice.GuildVoiceLeaveEvent;
 import github.scarsz.discordsrv.dependencies.jda.api.hooks.ListenerAdapter;
 import github.scarsz.discordsrv.objects.managers.AccountLinkManager;
-import net.kyori.adventure.audience.MessageType;
-import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.entity.Player;
@@ -27,7 +25,7 @@ public class JdaListener extends ListenerAdapter {
     @Override
     public void onGuildVoiceJoin(GuildVoiceJoinEvent event) {
         List<Member> connectedMembers = event.getChannelJoined().getMembers();
-        TextComponent message = Component.text(event.getMember().getEffectiveName() + " joined your voice");
+        TextComponent message = Component.text(event.getMember().getEffectiveName() + " joined your voice channel.");
         informPlayers(connectedMembers, message, event.getEntity());
     }
 
@@ -35,7 +33,7 @@ public class JdaListener extends ListenerAdapter {
     @Override
     public void onGuildVoiceLeave(GuildVoiceLeaveEvent event) {
         List<Member> connectedMembers = event.getChannelLeft().getMembers();
-        TextComponent message = Component.text(event.getMember().getEffectiveName() + " left your voice");
+        TextComponent message = Component.text(event.getMember().getEffectiveName() + " left your voice channel.");
         informPlayers(connectedMembers, message, event.getEntity());
 
     }
@@ -50,7 +48,7 @@ public class JdaListener extends ListenerAdapter {
             if (uuid != null) {
                 Player player = plugin.getServer().getPlayer(uuid);
                 if (player != null && player.isOnline()) {
-                    player.sendMessage(Identity.nil(), message, MessageType.SYSTEM);
+                    player.sendActionBar(message);
                 }
             }
         }

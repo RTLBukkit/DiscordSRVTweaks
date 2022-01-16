@@ -1,7 +1,7 @@
-name: DiscordSRVTweaks
+name: DiscordSRVTweaks-RTL
 version: 1.0-SNAPSHOT
 api-version: 1.17
-author: stepech
-main: com.stepech.DiscordSRVTweaks.DiscordSRVTweaks
+author: ryantheleach
+main: au.id.rleach.DiscordSRVTweaks.DiscordSRVTweaks
 depend:
   - DiscordSRV
